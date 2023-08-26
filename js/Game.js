@@ -9,14 +9,41 @@
 class Game {
     constructor() {
         this.missed = 0;
-        this.phrases = [
-            "Play to Win",
-            "Catch the Wave",
-            "Hit the Road",
-            "Seize the Day",
-            "Break a Leg"
-        ];
+        this.phrases = [];
         this.activePhrase = null;
+
+        // initialize the phrase array
+        const phrase_pool = [
+            "The cat sat on the mat",
+            "A dog barks loudly",
+            "Jump over the moon",
+            "The sun is shining bright",
+            "Rain falls from the sky",
+            "Eat your vegetables",
+            "Sleep early at night",
+            "Birds fly in the sky",
+            "Fish swim in the sea",
+            "Plant a tree for shade",
+            "Brush your teeth daily",
+            "The bee buzzes around",
+            "A frog leaps in the pond",
+            "Wind blows the leaves",
+            "Snow falls in winter",
+            "A fox is very sly",
+            "Wear your warm coat",
+            "Drive a car carefully",
+            "The owl hoots at night",
+            "Read a book every day"
+        ];
+
+        phrase_pool.forEach((phrase_text) => {
+            let phrase_obj = new Phrase(phrase_text)
+            this.phrases.push(phrase_obj)
+        });
+
+
+
+
     }
 
 
@@ -25,12 +52,17 @@ class Game {
         const overlay = document.getElementById('overlay')
         overlay.style.display = 'none';
 
+        // Old code for debugging/reference
         // get a phrase to start the game
-        let random_phrase = this.getRandomPhrase()
-        console.log(random_phrase)
+        // let random_phrase = this.getRandomPhrase()
+        // console.log(random_phrase)
+        //
+        // // instantiate phrase with the Phrase class
+        // phrase = new Phrase(random_phrase)
 
-        // instantiate phrase with the Phrase class
-        phrase = new Phrase(random_phrase)
+
+        phrase = this.getRandomPhrase()
+        console.log(phrase)
 
         // assign the actual phrase to activePhrase for future reference
         this.activePhrase = phrase.phrase
@@ -43,6 +75,10 @@ class Game {
 
 
     getRandomPhrase() {
+        //this method randomly retrieves one of the phrases stored in the this.phrases array and returns it.
+        // const randomIndex = Math.floor(Math.random() * this.phrases.length);
+        // return this.phrases[randomIndex];
+
         //this method randomly retrieves one of the phrases stored in the this.phrases array and returns it.
         const randomIndex = Math.floor(Math.random() * this.phrases.length);
         return this.phrases[randomIndex];
