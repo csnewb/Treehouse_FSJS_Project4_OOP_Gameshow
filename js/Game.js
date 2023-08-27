@@ -9,40 +9,14 @@
 class Game {
     constructor() {
         this.missed = 0;
-        this.phrases = [];
-        this.activePhrase = null;
-
-        // initialize the phrase array
-        const phrase_pool = [
-            "The cat sat on the mat",
-            "A dog barks loudly",
-            "Jump over the moon",
-            "The sun is shining bright",
-            "Rain falls from the sky",
-            "Eat your vegetables",
-            "Sleep early at night",
-            "Birds fly in the sky",
-            "Fish swim in the sea",
-            "Plant a tree for shade",
-            "Brush your teeth daily",
-            "The bee buzzes around",
-            "A frog leaps in the pond",
-            "Wind blows the leaves",
-            "Snow falls in winter",
-            "A fox is very sly",
-            "Wear your warm coat",
-            "Drive a car carefully",
-            "The owl hoots at night",
-            "Read a book every day"
+        this.phrases = [
+            new Phrase("The cat sat on the mat"),
+            new Phrase("A dog barks loudly"),
+            new Phrase("Jump over the moon"),
+            new Phrase("Eat your vegetables"),
+            new Phrase("A fox is very sly"),
         ];
-
-        phrase_pool.forEach((phrase_text) => {
-            let phrase_obj = new Phrase(phrase_text)
-            this.phrases.push(phrase_obj)
-        });
-
-
-
+        this.activePhrase = null;
 
     }
 
@@ -58,17 +32,16 @@ class Game {
         // console.log(random_phrase)
         //
         // // instantiate phrase with the Phrase class
-        // phrase = new Phrase(random_phrase)
+        // // phrase = new Phrase(random_phrase)
+        // phrase = this.getRandomPhrase()
+        // // assign the actual phrase to activePhrase for future reference
+        // this.activePhrase = phrase.phrase
+        // // call the function to display the phrase on the screen
+        // phrase.addPhraseToDisplay()
 
-
-        phrase = this.getRandomPhrase()
-        console.log(phrase)
-
-        // assign the actual phrase to activePhrase for future reference
-        this.activePhrase = phrase.phrase
-
-        // call the function to display the phrase on the screen
-        phrase.addPhraseToDisplay()
+        this.activePhrase = this.getRandomPhrase();
+        console.log(this.activePhrase.phrase)
+        this.activePhrase.addPhraseToDisplay();
 
 
     }
